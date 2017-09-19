@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.dchesterman.groovy.extension:djc-groovy-extension:1.0.0'
+    }
+}
+// Apply the java plugin to add support for Java
+apply plugin: 'groovy'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // The production code uses the SLF4J logging API at compile time
+    compile 'com.dchesterman.groovy.extension:djc-groovy-extension:1.0.0'
+
+    // Declare the dependency for your favourite test framework you want to use in your tests.
+    // TestNG is also supported by the Gradle Test task. Just change the
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
+task testString {
+    doLast() {
+        println 'DJC'
+        println ''.sayMyName()
+    }
+}
